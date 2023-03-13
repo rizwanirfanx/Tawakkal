@@ -19,6 +19,10 @@ class _BannerComponentState extends State<BannerComponent> {
         Container(
           height: 250,
           decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+            ),
             color: Color(0xFF205CBe),
             gradient: LinearGradient(
               colors: [
@@ -27,6 +31,18 @@ class _BannerComponentState extends State<BannerComponent> {
               ],
               begin: Alignment.topLeft,
               end: Alignment(1, 1),
+            ),
+          ),
+        ),
+        const Positioned(
+          top: 0,
+          right: 50,
+          left: 50,
+          child: Opacity(
+            opacity: 0.3,
+            child: Image(
+              width: 400,
+              image: AssetImage('assets/images/Tawakkal-logo.png'),
             ),
           ),
         ),

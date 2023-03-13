@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey_taxi/components/Link.dart';
 import 'package:hey_taxi/components/banner_component.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/social_logins_buttons.dart';
@@ -90,9 +91,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('Already Have an Account?'),
-                    Text('Login'),
+                  children: [
+                    const Text('Already Have an Account?'),
+		    Link(routeName: '/login', text: ('Login')),
                   ],
                 ),
                 const SizedBox(height: 10),

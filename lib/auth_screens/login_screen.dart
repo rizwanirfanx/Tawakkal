@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey_taxi/components/Link.dart';
 import 'package:hey_taxi/components/banner_component.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/social_logins_buttons.dart';
@@ -49,9 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text('Don\'t have an account? '),
-                    Text('Sign Up'),
+		    Link(routeName: '/register', text: 'Register' ),
                   ],
                 ),
                 const SizedBox(height: 10),

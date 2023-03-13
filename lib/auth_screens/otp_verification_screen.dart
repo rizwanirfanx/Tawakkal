@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hey_taxi/components/banner_component.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/social_logins_buttons.dart';
+import 'package:otp_text_field/otp_field.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});
@@ -32,40 +33,25 @@ class _OTPScreen extends State<OTPScreen> {
                 Form(
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: TextFormField(
-                          decoration: const InputDecoration(hintText: 'Email'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: TextFormField(
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            hintText: 'Password',
-                          ),
-                        ),
-                      ),
+                      OTPTextField(
+                          length: 5,
+                          width: MediaQuery.of(context).size.width,
+                          textFieldAlignment: MainAxisAlignment.spaceAround,
+                          fieldWidth: 45,
+                          outlineBorderRadius: 15,
+                          style: TextStyle(fontSize: 17),
+                          onChanged: (pin) {
+                            print("Changed: " + pin);
+                          },
+                          onCompleted: (pin) {
+                            print("Completed: " + pin);
+                          }),
                     ],
                   ),
                 ),
                 const SizedBox(height: 30),
-                const PillButton(text: 'Verify OTP'),
+                const PillButton(text: 'Submit'),
                 const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text('Don\'t have an account? '),
-                    Text('Sign Up'),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                const Text('or'),
-                const SizedBox(height: 10),
-                const Text('Continue With'),
-                const SizedBox(height: 20),
-                const SocialLoginsButtons(),
               ],
             ),
           ),

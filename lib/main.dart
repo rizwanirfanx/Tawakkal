@@ -3,6 +3,7 @@ import 'package:hey_taxi/auth_screens/login_screen.dart';
 import 'package:hey_taxi/auth_screens/mobile_number_screen.dart';
 import 'package:hey_taxi/auth_screens/otp_verification_screen.dart';
 import 'package:hey_taxi/auth_screens/register_screen.dart';
+import 'package:hey_taxi/report_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
     Color myColor = Color(0xFF42A5F5);
     return MaterialApp(
       title: 'Flutter Demo',
+      routes: {
+	      '/login' :(context) => LoginScreen(),
+	      '/register' :(context) => RegisterScreen(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue ,
       ),
-      home: const MobileNumberScreen(),
+      home: const LoginScreen(),
     );
   }
 }
