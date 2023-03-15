@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomListItem extends StatelessWidget {
   const CustomListItem({super.key});
@@ -20,8 +21,8 @@ class CustomListItem extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text('I didn\'t feel safe in this ride'),
+            children: [
+              Text('I didn\'t feel safe in this ride', style: GoogleFonts.inter(color: Colors.black54)),
               Icon(Icons.chevron_right),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hey_taxi/components/CustomListItem.dart';
+import 'package:hey_taxi/components/navbar.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -18,14 +19,7 @@ class _ReportScreenState extends State<ReportScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(Icons.arrow_back_sharp),
-                  Text('Report', style: GoogleFonts.inter(fontSize: 18)),
-                  Container(),
-                ],
-              ),
+              Navbar(title: 'Report', icon: Icons.arrow_back_sharp),
               SizedBox(height: 20),
               CustomListItem(),
               CustomListItem(),

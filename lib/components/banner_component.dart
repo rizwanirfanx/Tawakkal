@@ -35,21 +35,23 @@ class _BannerComponentState extends State<BannerComponent> {
           ),
         ),
         const Positioned(
-          top: 0,
+          bottom: 20,
+          top: 20,
           right: 50,
           left: 50,
           child: Opacity(
-            opacity: 0.3,
-            child: Image(
-              width: 400,
-              image: AssetImage('assets/images/Tawakkal-logo.png'),
-            ),
-          ),
+              opacity: 0.3,
+              child: Hero(
+                  tag: 'logo',
+                  child: Image(
+                    width: 400,
+                    image: AssetImage('assets/images/Tawakkal-logo.png'),
+                  ))),
         ),
         Positioned(
           right: 50,
           left: 50,
-          bottom: 80,
+          bottom: 20,
           child: Center(
             child: Column(
               children: [
