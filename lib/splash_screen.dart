@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
   initState() { 
 	  var future = Future.delayed(
 		  Duration(seconds: 3), () => {
-			  Navigator.pushNamed(context, '/login'),
+			  Navigator.pushNamed(context, '/all_screens'),
 		  }
 	  );
   }
@@ -40,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
         child: Column(
 	mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ScaleTransition(
-              scale: _animation,
+            RotationTransition(
+              turns: _animation,
               child: const Image(
                 image: AssetImage('assets/images/Tawakkal-logo.png'),
               ),
