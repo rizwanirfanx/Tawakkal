@@ -12,30 +12,48 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  var emailRegex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          BannerComponent(title: 'Welcome Back!', subtitle: 'Let\'s get you a ride!'),
-          SizedBox(height: 50),
+          const BannerComponent(
+              title: 'Welcome Back!', subtitle: 'Let\'s get you a ride!'),
+          const SizedBox(height: 50),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               children: [
                 Form(
+                  key: _formKey,
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextFormField(
+                          controller: emailController,
+                          validator: (value) {
+                            if (value == null || !emailRegex.hasMatch(value)) {
+                              return 'Please Provide Valid Email';
+                            }
+                          },
                           decoration: const InputDecoration(hintText: 'Email'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextFormField(
+                          controller: passwordController,
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Password Cannot be Null';
+                            }
+                          },
                           obscureText: true,
                           decoration: const InputDecoration(
                             hintText: 'Password',
@@ -46,13 +64,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const PillButton(text: 'Login'),
+                PillButton(
+                    text: 'Login',
+                    callback: () {
+                      if (_formKey.currentState!.validate()) {
+                        if (passwordController.text == 'Pakistan' &&
+                            emailController.text == 'saira@gmail.com') {
+                          Navigator.pushNamed(context, '/dashboard');
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'User with Given Credentials Doesnt Exist'),
+                            ),
+                          );
+                        }
+                      }
+                    }),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Don\'t have an account? '),
-		    Link(routeName: '/register', text: 'Register' ),
+                    Link(routeName: '/register', text: 'Register'),
                   ],
                 ),
                 const SizedBox(height: 10),

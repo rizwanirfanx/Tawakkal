@@ -24,7 +24,6 @@ class _CaptainFoundState extends State<CaptainFound> {
             FlutterMap(
               options: MapOptions(center: LatLng(33.58, 71.44), zoom: 15.0),
               children: [
-                Text('Hello'),
                 TileLayer(
                   urlTemplate:
                       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -32,14 +31,26 @@ class _CaptainFoundState extends State<CaptainFound> {
                 ),
               ],
             ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      TripCard(),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                )
+              ],
+            ),
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
                   color: primaryColor,
@@ -94,17 +105,6 @@ class _CaptainFoundState extends State<CaptainFound> {
                             ],
                           ),
                         )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.star_outline, color: Colors.yellow),
-                        Icon(Icons.star_outline, color: Colors.yellow),
-                        Icon(Icons.star_outline, color: Colors.yellow),
-                        Icon(Icons.star_outline, color: Colors.yellow),
-                        Icon(Icons.star_outline, color: Colors.yellow),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -167,7 +167,10 @@ class _CaptainFoundState extends State<CaptainFound> {
                         SizedBox(
                           width: 150,
                           child: PillButton(
-                              text: 'Call Captain',
+				  callback: (){
+					  Navigator.pushNamed(context,'/rate_your_captain');
+				  },
+                              text: 'Ride is Complete',
                               buttonColor: Colors.white,
                               textColor: primaryColor),
                         ),
@@ -175,6 +178,10 @@ class _CaptainFoundState extends State<CaptainFound> {
                         SizedBox(
                           width: 150,
                           child: PillButton(
+                              callback: () {
+                                Navigator.pushNamed(
+                                    context, '/cancel_ride');
+                              },
                               text: 'Cancel',
                               buttonColor: Colors.white,
                               textColor: primaryColor),
@@ -184,18 +191,6 @@ class _CaptainFoundState extends State<CaptainFound> {
                   ],
                 ),
               ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      TripCard(),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                )
-              ],
             ),
           ],
         ),

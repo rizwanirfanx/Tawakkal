@@ -5,6 +5,7 @@ import 'package:hey_taxi/components/Link.dart';
 import 'package:hey_taxi/components/banner_component.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/social_logins_buttons.dart';
+import 'package:hey_taxi/constants.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -16,6 +17,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    TextEditingController passwordInputController = TextEditingController();
     return Scaffold(
       body: Column(
         children: [
@@ -29,6 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               padding: EdgeInsets.symmetric(horizontal: 30),
               children: [
                 Form(
+                  key: _formKey,
                   child: Column(
                     children: [
                       Row(
@@ -38,6 +42,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
                               child: TextFormField(
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'First Name Can\' be Empty';
+                                  }
+                                },
                                 decoration: const InputDecoration(
                                     hintText: 'First Name'),
                               ),
@@ -49,9 +58,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
                               child: TextFormField(
-                                obscureText: true,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Last Name Can\' be Empty';
+                                  }
+                                },
                                 decoration: const InputDecoration(
-                                  hintText: 'Last Name',
+                                  hintText: 'Email',
                                 ),
                               ),
                             ),
@@ -61,27 +74,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextFormField(
+                          controller: passwordInputController,
+                          validator: (value) {
+                            if (value != null) {
+                              if (value.contains(RegExp(passwordRegexRule))) {
+                                return null;
+                              } else {
+                                return 'Password Not Strong Enough';
+                              }
+                            }
+                          },
                           obscureText: true,
                           decoration: const InputDecoration(
-                            hintText: 'Last Name',
+                            hintText: 'Password',
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: TextFormField(
+                          validator: (value) {
+                            if (value == passwordInputController.text) {
+                              return null;
+                            }
+                            return 'Password Doesn\'t Match!';
+                          },
                           obscureText: true,
                           decoration: const InputDecoration(
-                            hintText: 'Last Name',
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
-                        child: TextFormField(
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            hintText: 'Last Name',
+                            hintText: 'Confirm Password',
                           ),
                         ),
                       ),
@@ -89,7 +109,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const PillButton(text: 'Sign Up'),
+                PillButton(
+                  text: 'Sign Up m',
+                  callback: () {
+                    if (_formKey.currentState!.validate()) {
+                      print('Processing Form');
+                    }
+                  },
+                ),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hey_taxi/all_screens.dart';
 import 'package:hey_taxi/routes/routes.dart';
 import 'package:hey_taxi/splash_screen.dart';
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -26,10 +28,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue ,
+        primarySwatch: Colors.blue,
       ),
       home: const SplashScreen(),
     );
   }
 }
-

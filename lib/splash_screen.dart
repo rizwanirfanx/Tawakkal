@@ -18,14 +18,15 @@ class _SplashScreenState extends State<SplashScreen>
     curve: Curves.fastOutSlowIn,
   );
 
-  @override 
-  initState() { 
-	  var future = Future.delayed(
-		  Duration(seconds: 3), () => {
-			  Navigator.pushNamed(context, '/all_screens'),
-		  }
-	  );
+  @override
+  initState() {
+    var future = Future.delayed(
+        Duration(seconds: 3),
+        () => {
+              Navigator.pushNamed(context, '/login'),
+            });
   }
+
   @override
   dispose() {
     _controller.dispose();
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: primaryColor,
       body: Center(
         child: Column(
-	mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RotationTransition(
               turns: _animation,

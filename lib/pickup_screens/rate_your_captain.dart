@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/trip_card.dart';
 import 'package:hey_taxi/constants.dart';
 
@@ -10,6 +11,14 @@ class RateYourCaptain extends StatefulWidget {
 }
 
 class _RateYourCaptainState extends State<RateYourCaptain> {
+  int stars = 0;
+
+  void setValueOfStar(int numberOfStars) {
+    setState(() {
+      stars = numberOfStars;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +57,7 @@ class _RateYourCaptainState extends State<RateYourCaptain> {
                   Icon(Icons.star, color: Colors.yellow),
                 ],
               ),
-	      SizedBox(height: 10),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -79,17 +88,36 @@ class _RateYourCaptainState extends State<RateYourCaptain> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.star_outline, color: Colors.yellow),
-                  Icon(Icons.star_outline, color: Colors.yellow),
-                  Icon(Icons.star_outline, color: Colors.yellow),
-                  Icon(Icons.star_outline, color: Colors.yellow),
-                  Icon(Icons.star_outline, color: Colors.yellow),
+                  for (int i = 0; i < 5; i++)
+                    GestureDetector(
+                      onTap: () {
+                        setValueOfStar(i);
+                      },
+                      child: starIcon(stars, i),
+                    ),
                 ],
               ),
+              SizedBox(height: 10),
+              PillButton(
+                buttonColor: Colors.white,
+                textColor: primaryColor,
+                text: 'Back to Home',
+                callback: () {
+                  Navigator.pushNamed(context, '/dashboard');
+                },
+              )
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+Widget starIcon(int numberOfStarsSelected, int currentValue) {
+  if (currentValue > numberOfStarsSelected) {
+    return Icon(Icons.star_outline, color: Colors.yellow);
+  } else {
+    return Icon(Icons.star, color: Colors.yellow);
   }
 }

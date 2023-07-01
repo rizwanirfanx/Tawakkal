@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:hey_taxi/components/drawer.dart';
+import 'package:hey_taxi/components/location_item_input.dart';
+import 'package:hey_taxi/components/menu_button.dart';
 import 'package:hey_taxi/components/navbar.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/constants.dart';
@@ -14,9 +17,12 @@ class ChooseRideType extends StatefulWidget {
 
 class _ChooseRideTypeState extends State<ChooseRideType> {
   String? selectedRide;
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: TDrawer(),
       body: SafeArea(
         child: Stack(
           alignment: Alignment.center,
@@ -37,37 +43,22 @@ class _ChooseRideTypeState extends State<ChooseRideType> {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
-                      Text('Select Ride Type'),
-                      SizedBox(height: 20),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+                      const SizedBox(height: 30),
+                      const Text('Select Ride Type'),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          MenuButton(
+                            callback: () {
+                              _key.currentState!.openDrawer();
+                            },
                           ),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.location_pin),
-                            SizedBox(
-                                width:
-                                    10), // Add some spacing between the icon and the text field
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    hintText: 'Enter text here'),
-                              ),
-                            ),
-                            Icon(Icons.favorite_outline),
-                          ],
-                        ),
+                          LocationItemInput(),
+                        ],
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             Positioned(

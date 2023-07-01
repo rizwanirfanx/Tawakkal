@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:hey_taxi/components/drawer.dart';
+import 'package:hey_taxi/components/menu_button.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/constants.dart';
 import 'package:latlong2/latlong.dart';
@@ -15,9 +17,12 @@ class PickupScreen extends StatefulWidget {
 
 class _PickupScreenState extends State<PickupScreen> {
   String? selectedRide;
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: TDrawer(),
       body: SafeArea(
         child: Stack(
           alignment: Alignment.center,
@@ -38,33 +43,47 @@ class _PickupScreenState extends State<PickupScreen> {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
-                      Text('Select a Pickup Location'),
-                      SizedBox(height: 20),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.location_pin),
-                            SizedBox(
-                                width:
-                                    10), // Add some spacing between the icon and the text field
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    hintText: 'Enter text here'),
+                      const SizedBox(height: 30),
+                      const Text('Select a Pickup Location'),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          MenuButton(callback: () {
+                            _key.currentState!.openDrawer();
+                          }),
+                          Expanded(
+                            child: Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.location_pin),
+                                  const SizedBox(
+                                      width:
+                                          10), // Add some spacing between the icon and the text field
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, '/select_pickup_location');
+                                      },
+                                      child:
+                                          const Text('Select Pickup Location'),
+                                    ),
+                                  ),
+                                  const Icon(Icons.favorite_outline)
+                                ],
                               ),
                             ),
-                            Icon(Icons.heart_broken_outlined)
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -152,7 +171,7 @@ class _PickupScreenState extends State<PickupScreen> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: ElevatedButton(
-                        onPressed: () => {},
+                        onPressed: () => {Navigator.pushNamed(context, '/dropoff_screen')},
                         child: Text('Confirm Pickup'),
                         style: ElevatedButton.styleFrom(
                           foregroundColor: primaryColor,

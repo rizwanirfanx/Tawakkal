@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:hey_taxi/components/drawer.dart';
+import 'package:hey_taxi/components/menu_button.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/constants.dart';
 import 'package:latlong2/latlong.dart';
@@ -17,7 +19,10 @@ class _DropoffScreenState extends State<DropoffScreen> {
   String? selectedRide;
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _key = GlobalKey();
     return Scaffold(
+      drawer: const TDrawer(),
+      key: _key,
       body: SafeArea(
         child: Stack(
           alignment: Alignment.center,
@@ -25,7 +30,6 @@ class _DropoffScreenState extends State<DropoffScreen> {
             FlutterMap(
               options: MapOptions(center: LatLng(33.58, 71.44), zoom: 15.0),
               children: [
-                Text('Hello'),
                 TileLayer(
                   urlTemplate:
                       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -41,98 +45,113 @@ class _DropoffScreenState extends State<DropoffScreen> {
                       SizedBox(height: 30),
                       Text('Select Dropoff Location'),
                       SizedBox(height: 20),
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        margin: EdgeInsets.all(30),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        children: [
+                          MenuButton(callback: () {
+                            _key.currentState!.openDrawer();
+                          }),
+                          Expanded(
+                              child: Container(
+                            padding: const EdgeInsets.all(20),
+                            margin: const EdgeInsets.all(30),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    Icon(
-                                      Icons.location_pin,
-                                      color: primaryColor,
-                                    ),
-                                    Container(
-                                      color: primaryColor,
-                                      height: 20,
-                                      width: 1,
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
+                                    Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        Text('Street 49, Park Slope'),
-                                        Text(
-                                          'New York',
-                                          style: TextStyle(color: Colors.grey),
+                                        Icon(
+                                          Icons.location_pin,
+                                          color: primaryColor,
+                                        ),
+                                        Container(
+                                          color: primaryColor,
+                                          height: 20,
+                                          width: 1,
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Container(
-                                      color: primaryColor,
-                                      height: 30,
-                                      width: 1,
-                                    ),
-                                    Icon(
-                                      Icons.location_pin,
-                                      color: primaryColor,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text('Street 49, Park Slope'),
+                                            Text(
+                                              'New York',
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.all(8),
-                                    child: Column(
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        TextField(
-                                          decoration: InputDecoration(
-                                            hintText:
-                                                'Where do you want to go?',
-                                          ),
+                                        Container(
+                                          color: primaryColor,
+                                          height: 30,
+                                          width: 1,
+                                        ),
+                                        Icon(
+                                          Icons.location_pin,
+                                          color: primaryColor,
                                         ),
                                       ],
                                     ),
-                                  ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            GestureDetector(
+                                              onTap: () {
+                                                Navigator.pushNamed(context,
+                                                    '/select_dropoff_location');
+                                              },
+                                              child: Text(
+                                                  'Where do you want to go'),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          )),
+                        ],
                       ),
                     ],
                   ),
@@ -223,6 +242,9 @@ class _DropoffScreenState extends State<DropoffScreen> {
                         SizedBox(
                           width: 130,
                           child: PillButton(
+                              callback: () {
+                                Navigator.pushNamed(context, '/captain_found');
+                              },
                               text: 'Add Dropoff',
                               buttonColor: Colors.white,
                               textColor: primaryColor),

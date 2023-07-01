@@ -4,14 +4,24 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomListItem extends StatelessWidget {
-  const CustomListItem({super.key});
+  const CustomListItem(
+      {super.key,
+      this.text,
+      this.icon,
+      this.suffixWidget,
+      this.middleContent,
+      this.callback});
+  final String? text;
+  final Icon? icon;
+  final Widget? suffixWidget;
+  final VoidCallback? callback;
+  final Widget? middleContent;
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       InkWell(
-        onTap: () {
-        },
+        onTap: callback ?? () {},
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: const BoxDecoration(
@@ -22,8 +32,16 @@ class CustomListItem extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('I didn\'t feel safe in this ride', style: GoogleFonts.inter(color: Colors.black54)),
-              Icon(Icons.chevron_right),
+              Row(
+                children: [
+                  icon ?? Container(),
+                  SizedBox(width: 8),
+                  middleContent ??
+                      Text(text ?? 'I didn\'t feel safe in this ride',
+                          style: GoogleFonts.inter(color: Colors.black54)),
+                ],
+              ),
+              suffixWidget ?? const Icon(Icons.chevron_right),
             ],
           ),
         ),
