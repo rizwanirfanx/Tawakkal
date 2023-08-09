@@ -44,7 +44,10 @@ class _PickupScreenState extends State<PickupScreen> {
                   child: Column(
                     children: [
                       const SizedBox(height: 30),
-                      const Text('Select a Pickup Location'),
+                      const Text(
+                        'Select a Pickup Location',
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
@@ -103,6 +106,7 @@ class _PickupScreenState extends State<PickupScreen> {
                   color: primaryColor,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),
@@ -116,7 +120,8 @@ class _PickupScreenState extends State<PickupScreen> {
                       child: DropdownButton(
                         hint: Row(
                           children: [
-                            Icon(Icons.car_crash, color: Colors.white),
+                            Image.asset(
+                                'assets/images/car-removebg-preview.png'),
                             SizedBox(width: 20),
                             Text(
                               selectedRide != null
@@ -141,10 +146,10 @@ class _PickupScreenState extends State<PickupScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
-                                children: const <Widget>[
-                                  Icon(Icons.train_outlined),
-                                  SizedBox(width: 10),
-                                  Text('Go 5 Mins Away'),
+                                children: <Widget>[
+																	Image.asset('assets/images/car-removebg-preview.png'),
+                                  const SizedBox(width: 10),
+                                  const Text('Go 5 Mins Away'),
                                 ],
                               ),
                             ),
@@ -156,10 +161,10 @@ class _PickupScreenState extends State<PickupScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
-                                children: const <Widget>[
-                                  Icon(Icons.mp),
-                                  SizedBox(width: 10),
-                                  Text('Go 6 Mins Away'),
+                                children: <Widget>[
+																	Image.asset('assets/images/car-removebg-preview.png'),
+                                  const SizedBox(width: 10),
+                                  const Text('Go 6 Mins Away'),
                                 ],
                               ),
                             ),
@@ -167,19 +172,15 @@ class _PickupScreenState extends State<PickupScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: ElevatedButton(
-                        onPressed: () => {Navigator.pushNamed(context, '/dropoff_screen')},
-                        child: Text('Confirm Pickup'),
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: primaryColor,
-                          backgroundColor: Colors.white,
-                          minimumSize: Size.fromHeight(40),
-                        ),
-                      ),
-                    )
+                    const SizedBox(height: 10),
+                    PillButton(
+                      text: 'Confirm Pickup',
+                      buttonColor: Colors.white,
+                      textColor: primaryColor,
+                      callback: () => {
+                        Navigator.pushNamed(context, '/dropoff_screen'),
+                      },
+                    ),
                   ],
                 ),
               ),

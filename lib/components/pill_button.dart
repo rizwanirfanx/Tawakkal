@@ -29,7 +29,7 @@ class _PillButtonState extends State<PillButton> {
         widget.callback!();
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
         decoration: BoxDecoration(
             color: widget.buttonColor ?? primaryColor,
             borderRadius: BorderRadius.all(
@@ -41,12 +41,12 @@ class _PillButtonState extends State<PillButton> {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 1,
                     blurRadius: 1,
-                    offset: Offset(0, 0), // changes position of shadow
+                    offset: const Offset(0, 0), // changes position of shadow
                   ),
             ]),
         child: Text(
           widget.text,
-	  textAlign: TextAlign.center,
+          textAlign: TextAlign.center,
           style: TextStyle(color: widget.textColor ?? Colors.white),
         ),
       ),

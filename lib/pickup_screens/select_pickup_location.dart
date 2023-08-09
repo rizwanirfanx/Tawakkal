@@ -22,6 +22,7 @@ class _SelectPickupLocationState extends State<SelectPickupLocation> {
               Navbar(title: 'Select Pickup Location'),
               SizedBox(height: 20),
               Text('Search For Location'),
+              Text('(The System will not be able to suggest location because google api has not been integrated yet)'),
               SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),

@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+							crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Form(
                   key: _formKey,
@@ -64,23 +65,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                PillButton(
-                    text: 'Login',
-                    callback: () {
-                      if (_formKey.currentState!.validate()) {
-                        if (passwordController.text == 'Pakistan' &&
-                            emailController.text == 'saira@gmail.com') {
-                          Navigator.pushNamed(context, '/dashboard');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                  'User with Given Credentials Doesnt Exist'),
-                            ),
-                          );
+                SizedBox(
+                  width: double.infinity,
+                  child: PillButton(
+                      text: 'Login',
+                      callback: () {
+                        if (_formKey.currentState!.validate()) {
+                          if (passwordController.text == 'Pakistan' &&
+                              emailController.text == 'saira@gmail.com') {
+                            Navigator.pushNamed(context, '/dashboard');
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'User with Given Credentials Doesnt Exist'),
+                              ),
+                            );
+                          }
                         }
-                      }
-                    }),
+                      }),
+                ),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
