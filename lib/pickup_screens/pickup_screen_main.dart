@@ -67,7 +67,7 @@ class _PickupScreenState extends State<PickupScreen> {
                               ),
                               child: Row(
                                 children: [
-                                  const Icon(Icons.location_pin),
+                                  Icon(Icons.location_pin, color: primaryColor,),
                                   const SizedBox(
                                       width:
                                           10), // Add some spacing between the icon and the text field
@@ -81,7 +81,7 @@ class _PickupScreenState extends State<PickupScreen> {
                                           const Text('Select Pickup Location'),
                                     ),
                                   ),
-                                  const Icon(Icons.favorite_outline)
+                                  const Icon(Icons.favorite_outline, color: Colors.grey,)
                                 ],
                               ),
                             ),

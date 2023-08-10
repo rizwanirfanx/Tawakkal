@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hey_taxi/components/CustomListItem.dart';
+import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/constants.dart';
 
 class TDrawer extends StatelessWidget {
@@ -55,10 +56,11 @@ class TDrawer extends StatelessWidget {
         color: primaryColor,
         child: SafeArea(
           child: Container(
+            decoration: BoxDecoration(color: primaryColor),
             padding: EdgeInsets.symmetric(horizontal: 20),
             margin: EdgeInsets.only(top: 20),
-            color: primaryColor,
             child: Column(
+							crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -93,37 +95,46 @@ class TDrawer extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, drawerItem['link']);
-                        },
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(drawerItem['icon_name'], color: Colors.white),
-                            SizedBox(width: 20),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  drawerItem['drawer_item_title'],
-                                  style: TextStyle(
+                      onTap: () {
+                        Navigator.pushNamed(context, drawerItem['link']);
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(drawerItem['icon_name'], color: Colors.white),
+                          SizedBox(width: 20),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                drawerItem['drawer_item_title'],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                drawerItem['points'] ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300,
                                     color: Colors.white,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                                SizedBox(height: 4),
-                                Text(
-                                  drawerItem['points'] ?? '',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white,
-                                      fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
+                                    fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
+                SizedBox(
+                  height: 40,
+                ),
+                PillButton(
+                  text: 'Become a Captain',
+                  buttonColor: Colors.white,
+                  textColor: primaryColor,
+                ),
               ],
             ),
           ),

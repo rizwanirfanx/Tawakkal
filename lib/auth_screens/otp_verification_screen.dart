@@ -25,10 +25,11 @@ class _OTPScreen extends State<OTPScreen> {
               title: 'Verification!',
               subtitle:
                   'Please Enter the 4-digit code sent to you at 418 348 8877'),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+							crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Form(
                   child: Column(

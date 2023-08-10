@@ -17,7 +17,7 @@ class PromotionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 14),
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 14),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -55,6 +55,7 @@ class PromotionCard extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ],
+
       ),
     );
   }

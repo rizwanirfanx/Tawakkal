@@ -53,16 +53,18 @@ class _CaptainFoundState extends State<CaptainFound> {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
-                  color: primaryColor,
+                  color: primaryColor.withOpacity(0.8),
                 ),
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      foregroundImage: NetworkImage(
-                          'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png'),
+                    Transform.translate(
+                      offset: Offset(0, -40),
+                      child: CircleAvatar(
+                        radius: 50,
+                        foregroundImage: NetworkImage(
+                            'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png'),
+                      ),
                     ),
-                    SizedBox(height: 10),
                     Text(
                       'Corey Schleifer',
                       style: TextStyle(color: Colors.white, fontSize: 18),
@@ -167,9 +169,10 @@ class _CaptainFoundState extends State<CaptainFound> {
                         SizedBox(
                           width: 150,
                           child: PillButton(
-				  callback: (){
-					  Navigator.pushNamed(context,'/rate_your_captain');
-				  },
+                              callback: () {
+                                Navigator.pushNamed(
+                                    context, '/rate_your_captain');
+                              },
                               text: 'Ride is Complete',
                               buttonColor: Colors.white,
                               textColor: primaryColor),
@@ -179,10 +182,9 @@ class _CaptainFoundState extends State<CaptainFound> {
                           width: 150,
                           child: PillButton(
                               callback: () {
-                                Navigator.pushNamed(
-                                    context, '/cancel_ride');
+                                Navigator.pushNamed(context, '/cancel_ride');
                               },
-                              text: 'Cancel',
+                              text: 'Cancel Ride',
                               buttonColor: Colors.white,
                               textColor: primaryColor),
                         ),

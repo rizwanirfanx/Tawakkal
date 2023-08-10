@@ -110,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 20),
                 PillButton(
-                  text: 'Sign Up m',
+                  text: 'Sign Up',
                   callback: () {
                     if (_formKey.currentState!.validate()) {
                       print('Processing Form');

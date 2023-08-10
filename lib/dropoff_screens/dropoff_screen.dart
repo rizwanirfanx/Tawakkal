@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -142,7 +143,10 @@ class _DropoffScreenState extends State<DropoffScreen> {
                                                       '/select_dropoff_location');
                                                 },
                                                 child: Text(
-                                                    'Where do you want to go'),
+                                                  'Where do you want to go',
+                                                  style: TextStyle(
+                                                      color: Colors.grey),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -201,7 +205,7 @@ class _DropoffScreenState extends State<DropoffScreen> {
                       child: DropdownButton(
                         hint: Row(
                           children: [
-                            Icon(Icons.car_crash, color: Colors.white),
+														Image.asset('assets/images/car-removebg-preview.png'),
                             SizedBox(width: 20),
                             Text(
                               selectedRide != null
@@ -252,12 +256,12 @@ class _DropoffScreenState extends State<DropoffScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 130,
+                          width: 150,
                           child: PillButton(
                               callback: () {
                                 Navigator.pushNamed(context, '/captain_found');
@@ -268,7 +272,7 @@ class _DropoffScreenState extends State<DropoffScreen> {
                         ),
                         SizedBox(width: 10),
                         SizedBox(
-                          width: 100,
+                          width: 150,
                           child: PillButton(
                               text: 'Skip',
                               buttonColor: Colors.white,

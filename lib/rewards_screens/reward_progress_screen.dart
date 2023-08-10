@@ -46,19 +46,25 @@ class RewardProgressScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Benefits',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+              child: ListView(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Benefits',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 18),
+                        ),
+                        RewardsList(),
+                        Divider(),
+                        FAQs(),
+                      ],
                     ),
-                    RewardsList(),
-                    FAQs(),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

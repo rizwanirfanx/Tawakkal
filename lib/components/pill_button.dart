@@ -9,13 +9,16 @@ class PillButton extends StatefulWidget {
       this.textColor,
       this.boxShadow,
       this.buttonBorderRadius,
-      this.callback});
+      this.callback, 
+			this.icon
+			});
   final String text;
   final Color? buttonColor;
   final Color? textColor;
   final BoxShadow? boxShadow;
   final double? buttonBorderRadius;
   final VoidCallback? callback;
+	final IconData? icon;
 
   @override
   State<PillButton> createState() => _PillButtonState();

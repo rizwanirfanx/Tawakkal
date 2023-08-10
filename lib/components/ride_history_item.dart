@@ -46,12 +46,13 @@ class RideHistoryItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
           const Divider(),
-          const SizedBox(height: 10),
           ExpansionTile(
             expandedCrossAxisAlignment: CrossAxisAlignment.start,
-            title: const Text('Details'),
+            title: const Text(
+              'Details',
+              style: TextStyle(fontSize: 14, color: Colors.grey),
+            ),
             trailing: const Icon(Icons.chevron_left),
             children: [
               Row(

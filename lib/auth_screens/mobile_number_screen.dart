@@ -23,6 +23,7 @@ class _MobileNumberScreenState extends State<MobileNumberScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Column(
+							crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Form(
                   child: Column(
@@ -56,9 +57,9 @@ class _MobileNumberScreenState extends State<MobileNumberScreen> {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const Text('or'),
+                const Text('or', textAlign: TextAlign.center,),
                 const SizedBox(height: 10),
-                const Text('Continue With'),
+                const Text('Continue With', textAlign: TextAlign.center,),
                 const SizedBox(height: 20),
                 const SocialLoginsButtons(),
               ],

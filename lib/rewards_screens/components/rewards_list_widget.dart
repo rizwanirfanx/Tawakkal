@@ -25,14 +25,16 @@ class RewardsList extends StatelessWidget {
         'reward_icon': Icons.airplane_ticket_outlined,
       },
     ];
-    return Column(children: [
-      for (var rewardItem in rewardsList)
-        Container(
-          child: RewardItem(
-              title: rewardItem['reward_title'],
-              subtitle: rewardItem['reward_subtitle'],
-              icon: rewardItem['reward_icon']),
-        ),
-    ]);
+    return Column(
+      children: [
+        for (var rewardItem in rewardsList)
+          Container(
+            child: RewardItem(
+                title: rewardItem['reward_title'],
+                subtitle: rewardItem['reward_subtitle'],
+                icon: rewardItem['reward_icon']),
+          ),
+      ],
+    );
   }
 }

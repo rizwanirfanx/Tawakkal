@@ -85,17 +85,12 @@ class _TripCardState extends State<TripCard> {
                 children: <Widget>[
                   Container(
                     color: primaryColor,
-                    height: 20,
+                    height: 10,
                     width: 1,
                   ),
                   Icon(
                     Icons.location_pin,
                     color: primaryColor,
-                  ),
-                  Container(
-                    color: primaryColor,
-                    height: 20,
-                    width: 1,
                   ),
                 ],
               ),

@@ -35,21 +35,26 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RotationTransition(
-              turns: _animation,
-              child: const Image(
-                image: AssetImage('assets/images/Tawakkal-logo.png'),
+    return WillPopScope(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RotationTransition(
+                turns: _animation,
+                child: const Image(
+                  image: AssetImage('assets/images/Tawakkal-logo.png'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+      onWillPop: () async {
+        return false;
+      },
     );
   }
 }

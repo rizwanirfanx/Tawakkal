@@ -50,13 +50,15 @@ class HistoryScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: UpperRoundedButton(
-                        text: 'Upcoming',color: Colors.transparent, textColor: primaryColor),
+                        text: 'Upcoming',
+                        color: Colors.transparent,
+                        textColor: primaryColor),
                   ),
                   Expanded(
                     child: UpperRoundedButton(
-                        text: 'History',
-                        color: primaryColor,
-                         ),
+                      text: 'History',
+                      color: primaryColor,
+                    ),
                   ),
                 ],
               ),
