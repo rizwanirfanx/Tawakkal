@@ -83,6 +83,8 @@ class AllScreensLinks extends StatelessWidget {
                 Link(routeName: '/rewards', text: 'Rewards'),
                 SizedBox(height: 40),
                 Link(routeName: '/reward_progress', text: 'Reward Progress'),
+                SizedBox(height: 40),
+                Link(routeName: '/users', text: 'All Users'),
               ],
             ),
           ),

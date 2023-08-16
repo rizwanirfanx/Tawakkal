@@ -67,7 +67,10 @@ class _PickupScreenState extends State<PickupScreen> {
                               ),
                               child: Row(
                                 children: [
-                                  Icon(Icons.location_pin, color: primaryColor,),
+                                  Icon(
+                                    Icons.location_pin,
+                                    color: primaryColor,
+                                  ),
                                   const SizedBox(
                                       width:
                                           10), // Add some spacing between the icon and the text field
@@ -81,7 +84,10 @@ class _PickupScreenState extends State<PickupScreen> {
                                           const Text('Select Pickup Location'),
                                     ),
                                   ),
-                                  const Icon(Icons.favorite_outline, color: Colors.grey,)
+                                  const Icon(
+                                    Icons.favorite_outline,
+                                    color: Colors.grey,
+                                  )
                                 ],
                               ),
                             ),
@@ -147,7 +153,8 @@ class _PickupScreenState extends State<PickupScreen> {
                               ),
                               child: Row(
                                 children: <Widget>[
-																	Image.asset('assets/images/car-removebg-preview.png'),
+                                  Image.asset(
+                                      'assets/images/car-removebg-preview.png'),
                                   const SizedBox(width: 10),
                                   const Text('Go 5 Mins Away'),
                                 ],
@@ -162,7 +169,8 @@ class _PickupScreenState extends State<PickupScreen> {
                               ),
                               child: Row(
                                 children: <Widget>[
-																	Image.asset('assets/images/car-removebg-preview.png'),
+                                  Image.asset(
+                                      'assets/images/car-removebg-preview.png'),
                                   const SizedBox(width: 10),
                                   const Text('Go 6 Mins Away'),
                                 ],

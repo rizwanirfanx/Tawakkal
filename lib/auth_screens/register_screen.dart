@@ -1,11 +1,15 @@
+import 'dart:io';
 import 'dart:math';
-
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
+import 'package:hey_taxi/Repositories/user_repo.dart';
 import 'package:hey_taxi/components/Link.dart';
 import 'package:hey_taxi/components/banner_component.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/components/social_logins_buttons.dart';
 import 'package:hey_taxi/constants.dart';
+import 'package:hey_taxi/Models/User.dart';
+import 'package:logging/logging.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -15,10 +19,35 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  int counter = 22;
+
   @override
   Widget build(BuildContext context) {
+
     final _formKey = GlobalKey<FormState>();
     TextEditingController passwordInputController = TextEditingController();
+    TextEditingController firstNameController = TextEditingController();
+    TextEditingController lastNameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    void _submitForm() async {
+			
+			debugPrint('Hello World');
+      if (_formKey.currentState!.validate()) {
+        String firstName = firstNameController.text;
+
+        String lastName = lastNameController.text;
+        String email = emailController.text;
+        String password = passwordInputController.text;
+        User user = User(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password);
+        int result = await UserRepo.insertUser(user);
+        UserRepo.users();
+      }
+    }
+
     return Scaffold(
       body: Column(
         children: [
@@ -42,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
                               child: TextFormField(
+                                controller: firstNameController,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'First Name Can\' be Empty';
@@ -58,18 +88,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
                               child: TextFormField(
+                                controller: lastNameController,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Last Name Can\' be Empty';
                                   }
                                 },
                                 decoration: const InputDecoration(
-                                  hintText: 'Email',
+                                  hintText: 'Last Name',
                                 ),
                               ),
                             ),
                           ),
                         ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: TextFormField(
+                          controller: emailController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Email cannot be Empty';
+                            }
+                          },
+                          decoration: const InputDecoration(
+                            hintText: 'Email Address',
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -109,12 +154,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                Text('$counter'),
                 PillButton(
                   text: 'Sign Up',
-                  callback: () {
-                    if (_formKey.currentState!.validate()) {
-                      print('Processing Form');
-                    }
+                  callback: () => {
+                    if (_formKey.currentState!.validate())
+                      {
+                        _submitForm(),
+                      }
                   },
                 ),
                 const SizedBox(height: 30),

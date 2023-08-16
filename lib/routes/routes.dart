@@ -13,6 +13,7 @@ import 'package:hey_taxi/Wallet/enter_amount.dart';
 import 'package:hey_taxi/Wallet/tx_history.dart';
 import 'package:hey_taxi/Wallet/wallet_dashboard.dart';
 import 'package:hey_taxi/all_screens.dart';
+import 'package:hey_taxi/all_users_screen.dart.dart';
 import 'package:hey_taxi/auth_screens/login_screen.dart';
 import 'package:hey_taxi/auth_screens/mobile_number_screen.dart';
 import 'package:hey_taxi/auth_screens/otp_verification_screen.dart';
@@ -70,4 +71,7 @@ var routes = {
   '/dashboard' : (context) => const Dashboard(),
   '/tx_history' : (context) => const TXHistory(),
   '/enter_amount' : (context) => const EnterAmountScreen(),
+	'/users' : (context) => const UserListScreen(),
+
+
 };

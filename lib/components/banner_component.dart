@@ -21,7 +21,7 @@ class _BannerComponentState extends State<BannerComponent> {
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(30),
-              bottomLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(130),
             ),
             color: Color(0xFF205CBe),
             gradient: LinearGradient(

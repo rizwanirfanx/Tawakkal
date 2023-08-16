@@ -18,20 +18,11 @@ class _WalletCardState extends State<WalletCard> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: WalletRepo().getAmountInWallet(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return displayWalletCard(snapshot.data);
-        } else {
-          return ErrorCard();
-        }
-      },
-    );
+    return displayWalletCard();
   }
 }
 
-Widget displayWalletCard(dynamic snapshot) {
+Widget displayWalletCard({dynamic snapshot}) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
     decoration: BoxDecoration(
@@ -55,7 +46,7 @@ Widget displayWalletCard(dynamic snapshot) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'USD',
               style: TextStyle(
                 color: Colors.white,
@@ -64,7 +55,7 @@ Widget displayWalletCard(dynamic snapshot) {
             ),
             SizedBox(width: 5),
             Text(
-              snapshot.toString(),
+              '200',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
