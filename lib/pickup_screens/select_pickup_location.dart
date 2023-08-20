@@ -11,10 +11,34 @@ class SelectPickupLocation extends StatefulWidget {
 class _SelectPickupLocationState extends State<SelectPickupLocation> {
   List areas = [
     {
-      'city': 'new york',
-      'areas': ['brooklyn', 'manhattan', 'staten island'],
+      'city': 'New York',
+      'locations': ['Brooklyn', 'Manhattan', 'Staten Island'],
     },
   ];
+
+  List searchResult = [
+    {
+      'city': 'New York',
+      'locations': ['Brooklyn', 'Manhattan', 'Staten Island'],
+    },
+  ];
+
+  void selectedCityChanged(String citySubstring) {
+    for (int i = 0; i < areas.length; i++) {
+      if (areas[i]['city'].contains(citySubstring)) {
+      } else {
+        print('No Cities were found');
+      }
+    }
+  }
+
+  void searchedLocationChanged(String locationSubstring) {
+    for (int i = 0; i < areas.length; i++) {
+      areas[i]['locations'].forEach((location) {
+        if (location.toLowerCase().contains(locationSubstring.toLowerCase())) {}
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +65,9 @@ class _SelectPickupLocationState extends State<SelectPickupLocation> {
                   ),
                 ),
                 child: TextFormField(
+                  onChanged: (value) {
+                    searchedLocationChanged(value.toLowerCase());
+                  },
                   decoration: InputDecoration(
                     icon: Icon(Icons.search),
                     border: InputBorder.none,
@@ -65,13 +92,68 @@ class _SelectPickupLocationState extends State<SelectPickupLocation> {
                   ),
                 ),
                 child: TextFormField(
-									onChanged: (value) {
-										print(value);
-									},
+									initialValue: 'Islamabad',
+                  onChanged: (value) {
+                    selectedCityChanged(value.toLowerCase());
+                  },
                   decoration: InputDecoration(
                     icon: Icon(Icons.search),
                     border: InputBorder.none,
                   ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: ListView(
+                  children: const [
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('G 6/3 Street 88'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('G 6/2 Street 87'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('G 6/4 Street 99'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Giga Mall'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Melody Market '),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Transworld Office'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Ufone Tower'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Centaurus'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                    ListTile(
+                      tileColor: Colors.white54,
+                      title: Text('Gulberg Greens, F 7 Markaz'),
+                      subtitle: Text('Islamabad'),
+                    ),
+                  ],
                 ),
               ),
             ],

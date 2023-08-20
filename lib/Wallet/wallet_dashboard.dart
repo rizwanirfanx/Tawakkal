@@ -20,6 +20,9 @@ class _WalletDasboardState extends State<WalletDasboard> {
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
+              SizedBox(
+                height: 30,
+              ),
               Navbar(title: 'Wallet'),
               SizedBox(height: 30),
               Container(

@@ -45,11 +45,6 @@ class TDrawer extends StatelessWidget {
         'drawer_item_title': 'Settings',
         'link': '/settings'
       },
-      {
-        "icon_name": Icons.miscellaneous_services_outlined,
-        'drawer_item_title': 'All Screen Link',
-        'link': '/all_screens',
-      },
     ];
     return Drawer(
       child: ColoredBox(

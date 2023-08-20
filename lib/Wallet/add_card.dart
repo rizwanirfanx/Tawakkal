@@ -13,7 +13,13 @@ class AddCardScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
+              SizedBox(
+                height: 10,
+              ),
               Navbar(title: 'Add Card'),
+              SizedBox(
+                height: 40,
+              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
@@ -24,20 +30,20 @@ class AddCardScreen extends StatelessWidget {
                           hintText: 'Enter Card Number',
                         ),
                       ),
-		      SizedBox(height: 10),
+                      SizedBox(height: 10),
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Card Holder Name',
                         ),
                       ),
-		      SizedBox(height: 10),
+                      SizedBox(height: 10),
                       TextField(
                         keyboardType: TextInputType.datetime,
                         decoration: InputDecoration(
                             hintText: 'Expiry Date (mm/yyyy)',
                             suffix: Icon(Icons.question_mark)),
                       ),
-		      SizedBox(height: 10),
+                      SizedBox(height: 10),
                       TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -59,11 +65,11 @@ class AddCardScreen extends StatelessWidget {
                 ),
               ),
               const Icon(Icons.lock_outline, color: Colors.black38),
-	      SizedBox(height: 10),
+              SizedBox(height: 10),
               const Text('All your information is safe and secured',
                   style: TextStyle(color: Colors.black38),
                   textAlign: TextAlign.center),
-	      SizedBox(height: 10),
+              SizedBox(height: 10),
             ],
           ),
         ),

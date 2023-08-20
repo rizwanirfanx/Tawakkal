@@ -4,6 +4,8 @@ import 'package:hey_taxi/components/drawer.dart';
 import 'package:hey_taxi/components/menu_button.dart';
 import 'package:hey_taxi/components/pill_button.dart';
 import 'package:hey_taxi/constants.dart';
+import 'package:flutter_map/plugin_api.dart';
+import 'package:latlong2/latlong.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -186,6 +188,32 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 200,
+                child: Container(
+									margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: FlutterMap(
+                    options: MapOptions(
+                      center: LatLng(51.509364, -0.128928),
+                      zoom: 9.2,
+                    ),
+                    nonRotatedChildren: [
+                      AttributionWidget.defaultWidget(
+                        source: 'OpenStreetMap contributors',
+                        onSourceTapped: null,
+                      ),
+                    ],
+                    children: [
+                      TileLayer(
+                        urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        userAgentPackageName: 'com.example.app',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

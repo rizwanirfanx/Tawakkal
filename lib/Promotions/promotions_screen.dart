@@ -32,10 +32,12 @@ class PromotionsScreen extends StatelessWidget {
                 startColor: Color.fromARGB(255, 35, 76, 184),
                 endColor: Color.fromARGB(255, 22, 123, 198),
               ),
+							Expanded(child: Container(),),
               const Text(
                 'Enjoy these current promotions while they last. We  will add future promotions as they become available',
                 style: TextStyle(color: Colors.grey),
               ),
+							const SizedBox(height: 10,),
             ],
           ),
         ),
